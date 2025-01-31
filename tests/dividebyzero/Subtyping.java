@@ -12,4 +12,38 @@ class SubtypeTest {
   //   @MyBottomQualifier int c = x; // expected error on this line, as indicated just above
   //   @MyBottomQualifier int d = y;
   // }
+ void bottomSubType(@Errorable int x) {
+    @Errorable int a = x;
+    // :: error: assignment
+    @Zero int b = x;
+    // :: error: assignment
+    @NonZero int c = x;
+    // :: error: assignment
+    @Zeroable int d = x;
+  }
+
+  void topSubType(@Zeroable int x) {
+    @Errorable int a = x;
+    @Zero int b = x;
+    @NonZero int c = x;
+    @Zeroable int d = x;
+  }
+
+  void zeroSubType(@Zero int x) {
+    @Errorable int a = x;
+    @Zero int b = x;
+    // :: error: assignment
+    @NonZero int c = x;
+    // :: error: assignment
+    @Zeroable int d = x;
+  }
+
+  void nonZeroSubType(@NonZero int x) {
+    @Errorable int a = x;
+    // :: error: assignment
+    @Zero int b = x;
+    @NonZero int c = x;
+    // :: error: assignment
+    @Zeroable int d = x;
+  }
 }

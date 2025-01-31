@@ -6,6 +6,15 @@ class MyAbstractionTest {
         a++;
         a--;
         // :: error: divide.by.zero
-        int b = 5 / 1;
+        int b = 5 / a;
+        a++;
+        // :: error: divide.by.zero
+        int c = 5 / a;
+        a *= 0;
+        a++;
+        int d = 5 / a;
+        a *= 0;
+        // :: error: divide.by.zero
+        int e = 5 / a;
     }
 }

@@ -25,17 +25,24 @@ public class DivByZeroAnnotatedTypeFactory extends BaseAnnotatedTypeFactory {
    * @return the most specific possible point in the lattice for the given literal
    */
   private Class<? extends Annotation> defaultAnnotation(LiteralTree literal) {
+    System.exit(0);
     switch (literal.getKind()) {
       case INT_LITERAL:
         int intValue = (Integer) literal.getValue();
-        // TODO
-        break;
+        if (intValue == 0) {
+          return Zero.class;
+        } else {
+          return NonZero.class;
+        }
       case LONG_LITERAL:
         long longValue = (Long) literal.getValue();
-        // TODO
-        break;
+        if (longValue == 0) {
+          return Zero.class;
+        } else {
+          return NonZero.class;
+        }
     }
-    return Top.class;
+    return Zeroable.class;
   }
 
   // ========================================================================

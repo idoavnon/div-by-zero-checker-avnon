@@ -12,11 +12,7 @@ class SubtypeTest {
   //   @MyBottomQualifier int c = x; // expected error on this line, as indicated just above
   //   @MyBottomQualifier int d = y;
   // }
-<<<<<<< HEAD
-  void bottomSubType(@Errorable int x) {
-=======
  void bottomSubType(@Errorable int x) {
->>>>>>> tmp
     @Errorable int a = x;
     // :: error: assignment
     @Zero int b = x;

@@ -29,11 +29,7 @@ public class DivByZeroVisitor extends BaseTypeVisitor<DivByZeroAnnotatedTypeFact
   private boolean errorAt(BinaryTree node) {
     // A BinaryTree can represent any binary operator, including + or -.
     return DIVISION_OPERATORS.contains(node.getKind()) && 
-<<<<<<< HEAD
-    (hasAnnotation(node, Zero.class) || hasAnnotation(node, Zeroable.class));
-=======
     (hasAnnotation(node.getRightOperand(), Zero.class) || hasAnnotation(node.getRightOperand(), Zeroable.class));
->>>>>>> tmp
   }
 
   /**
@@ -47,11 +43,7 @@ public class DivByZeroVisitor extends BaseTypeVisitor<DivByZeroAnnotatedTypeFact
     // A CompoundAssignmentTree represents any binary operator combined with an assignment,
     // such as "x += 10".
     return DIVISION_OPERATORS.contains(node.getKind()) && 
-<<<<<<< HEAD
-    (hasAnnotation(node, Zero.class) || hasAnnotation(node, Zeroable.class));
-=======
     (hasAnnotation(node.getExpression(), Zero.class) || hasAnnotation(node.getExpression(), Zeroable.class));
->>>>>>> tmp
   }
 
   // ========================================================================
